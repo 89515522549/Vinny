@@ -1,0 +1,38 @@
+package Audio;
+
+public class AudioManager {
+	private static AudioManager instanse = null;
+	
+	private AudioPlayer startMusic = new AudioPlayer("/Music/menu.mp3");
+	private AudioPlayer level1Music = new AudioPlayer("/Music/track2.mp3");
+	private AudioPlayer wastedMusic = new AudioPlayer("/Music/wasted.mp3");
+	private AudioPlayer winMusic = new AudioPlayer("/Music/win.mp3");
+	
+	
+	private AudioManager() {
+	}
+	
+	public static AudioManager getInstanse() {
+		if (instanse == null)
+			instanse = new AudioManager();
+		return instanse;
+	}
+	
+	
+	public AudioPlayer getStartMusic() {
+		return startMusic;
+	}
+	
+	public AudioPlayer getLevel1Music() {
+		return level1Music;
+	}
+	
+	public AudioPlayer getwastedMusic() {
+		return wastedMusic;
+	}
+	
+	public AudioPlayer getwinMusic() {
+		return winMusic;
+	}
+	
+}
