@@ -1,0 +1,42 @@
+package GameState;
+
+import Audio.AudioManager;
+import TileMap.Background;
+
+
+public class FinishState extends GameState {
+	private int delay;
+	private Background wasted;
+	
+	public FinishState (GameStateManager gsm){
+        this.gsm = gsm;
+        try {
+        	wasted = new Background("/Backgrounds/wasted.jpg",1);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        init();
+    }
+	
+	public void init() {
+		AudioManager.getInstanse().getLevel1Music().stop();
+		AudioManager.getInstanse().getStartMusic().stop();
+		AudioManager.getInstanse().getwastedMusic().play();
+		delay = 1000;
+		
+	}
+	public void update() {
+		delay--;
+		if (delay == 0)
+			gsm.setState(GameStateManager.MENUSTATE);
+	}
+	public void draw(java.awt.Graphics2D g) {
+		wasted.draw(g);
+	}
+	public void keyPressed(int k) {
+	}
+	public void keyReleased(int k) {
+	}
+}
+
